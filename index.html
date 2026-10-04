@@ -1,144 +1,286 @@
 <!DOCTYPE html>
-<html lang="es" class="h-full">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reglamento Oficial - NexoSMP Survival</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Libro de Leyes - NexoSMP Survival</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        medieval: {
-                            dark: '#0f1117',
-                            card: '#161923',
-                            leather: '#1f1a17',
-                            gold: '#f59e0b',
-                            goldlight: '#fbbf24',
-                        }
-                    },
-                    fontFamily: {
-                        cinzel: ['Cinzel', 'serif'],
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    }
-                }
-            }
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-    </script>
-</head>
-<body class="bg-medieval-dark text-gray-200 font-sans min-h-full flex flex-col antialiased selection:bg-medieval-gold selection:text-black">
+        body {
+            background-color: #0b0d12;
+            color: #d1d5db;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        header {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #131620;
+            border: 1px solid #2a2f42;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .logo-area h1 {
+            font-family: 'Cinzel', serif;
+            color: #d97706;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .logo-area p {
+            font-size: 10px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .discord-btn {
+            background-color: rgba(217, 119, 6, 0.1);
+            color: #d97706;
+            border: 1px solid rgba(217, 119, 6, 0.3);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .discord-btn:hover {
+            background-color: rgba(217, 119, 6, 0.2);
+        }
 
-    <!-- Header / Navbar -->
-    <header class="border-b border-medieval-gold/20 bg-medieval-card/85 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <span class="text-3xl">🛡️</span>
-                <div>
-                    <h1 class="font-cinzel font-bold text-xl text-medieval-gold tracking-wider">NEXOSMP</h1>
-                    <p class="text-xs text-gray-400 tracking-widest uppercase">Reglamento Oficial • Survival</p>
-                </div>
-            </div>
-            <a href="https://discord.gg/nexosmp" target="_blank" class="px-4 py-2 bg-medieval-gold/10 hover:bg-medieval-gold/20 text-medieval-gold border border-medieval-gold/30 rounded-lg text-sm font-semibold transition-all">
-                Discord Oficial
-            </a>
+        /* Contenedor del Libro */
+        .book-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #131620;
+            border: 2px solid #d97706;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .book-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, rgba(217, 119, 6, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .page-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        .page-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-header {
+            font-family: 'Cinzel', serif;
+            color: #fbbf24;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #2a2f42;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .page-body p, .page-body li {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #d1d5db;
+            margin-bottom: 15px;
+        }
+        .rule-card {
+            background-color: rgba(11, 13, 18, 0.5);
+            border: 1px solid #2a2f42;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .red { color: #f87171; font-weight: bold; }
+        .green { color: #4ade80; font-weight: bold; }
+        .yellow { color: #facc15; font-weight: bold; }
+
+        .note-box {
+            background-color: rgba(120, 53, 15, 0.2);
+            border-left: 4px solid #d97706;
+            padding: 12px 15px;
+            border-radius: 0 8px 8px 0;
+            font-size: 12px;
+            color: #fde68a;
+            margin-top: 15px;
+        }
+
+        /* Controles de Páginas (Paso de página) */
+        .book-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #2a2f42;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        .nav-btn {
+            background-color: #1f2433;
+            color: #fbbf24;
+            border: 1px solid #d97706;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .nav-btn:hover:not(:disabled) {
+            background-color: #d97706;
+            color: #0b0d12;
+        }
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            border-color: #4b5563;
+            color: #6b7280;
+        }
+        .page-indicator {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            color: #9ca3af;
+            letter-spacing: 1px;
+        }
+
+        footer.site-info {
+            font-size: 11px;
+            color: #6b7280;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <h1>NEXOSMP SURVIVAL</h1>
+            <p>Libro de Leyes y Reglamento Oficial</p>
         </div>
+        <a href="https://discord.gg/nexosmp" target="_blank" class="discord-btn">Discord Oficial</a>
     </header>
 
-    <!-- Main Container -->
-    <main class="flex-grow max-w-4xl w-full mx-auto px-6 py-10">
-        <div class="bg-medieval-card border border-medieval-gold/30 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-            <!-- Decorative corner elements -->
-            <div class="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-medieval-gold/40 rounded-tl-2xl"></div>
-            <div class="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-medieval-gold/40 rounded-tr-2xl"></div>
-            <div class="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-medieval-gold/40 rounded-bl-2xl"></div>
-            <div class="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-medieval-gold/40 rounded-br-2xl"></div>
-
-            <div class="text-center mb-10">
-                <h2 class="font-cinzel text-3xl md:text-4xl font-extrabold text-medieval-gold mb-3">LIBRO DE LEYES</h2>
-                <p class="text-gray-400 text-sm max-w-lg mx-auto">Normativa oficial de conducta, comercio y juego limpio establecida para mantener una comunidad sana y competitiva.</p>
-            </div>
-
-            <!-- Content Sections -->
-            <div class="space-y-10 text-gray-300">
-                
-                <!-- Capítulo 0 -->
-                <section class="border-b border-gray-800 pb-8">
-                    <h3 class="font-cinzel text-xl font-bold text-medieval-goldlight flex items-center gap-2 mb-3">
-                        <span>📜</span> Introducción y Bienvenida
-                    </h3>
-                    <p class="text-sm leading-relaxed mb-4">
-                        Bienvenido al reglamento oficial de <strong class="text-white">NexoSMP Survival</strong>. Este servidor ha sido creado para ofrecer una experiencia de juego justa, competitiva y sobre todo divertida para todos los aventureros.
-                    </p>
-                    <div class="bg-medieval-leather/60 border-l-4 border-medieval-gold p-4 rounded-r-lg text-xs text-gray-300">
-                        <strong class="text-medieval-gold">Nota importante:</strong> El desconocimiento de estas reglas no exime a ningún jugador de su cumplimiento o de las sanciones correspondientes aplicadas por el staff.
-                    </div>
-                </section>
-
-                <!-- Capítulo 1 -->
-                <section class="border-b border-gray-800 pb-8">
-                    <h3 class="font-cinzel text-xl font-bold text-medieval-goldlight flex items-center gap-2 mb-3">
-                        <span>🛡️</span> Capítulo 1: Conducta y Respeto
-                    </h3>
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex items-start gap-2">
-                            <span class="text-red-400 font-bold">✖</span>
-                            <div><strong class="text-white">Cero Toxicidad y Acoso:</strong> Insultos graves, discriminación, acoso reiterado u odio hacia otros jugadores están estrictamente prohibidos y son sancionados con baneo permanente.</div>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-red-400 font-bold">✖</span>
-                            <div><strong class="text-white">Spam y Flood en Chat:</strong> No satures el chat público con repetición excesiva de mensajes, mayúsculas continuas o links externos no autorizados.</div>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-green-400 font-bold">✔</span>
-                            <div><strong class="text-white">Respeto al Staff:</strong> Las decisiones del equipo de administración son firmes. Cualquier reclamo formal debe gestionarse mediante un ticket de soporte.</div>
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- Capítulo 2 -->
-                <section class="border-b border-gray-800 pb-8">
-                    <h3 class="font-cinzel text-xl font-bold text-medieval-goldlight flex items-center gap-2 mb-3">
-                        <span>⚔️</span> Capítulo 2: PvP, Combate y Reclamos
-                    </h3>
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex items-start gap-2">
-                            <span class="text-yellow-400 font-bold">⚡</span>
-                            <div><strong class="text-white">PvP Habilitado:</strong> Permitido fuera de las zonas seguras (Spawn) y reclamos protegidos ajenos. Queda prohibido el abuso de trampas en portales o zonas de novatos.</div>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-yellow-400 font-bold">⚡</span>
-                            <div><strong class="text-white">Sistema de Claims:</strong> Protege tus pertenencias y edificaciones utilizando las herramientas de protección del servidor.</div>
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- Capítulo 3 -->
-                <section class="pb-4">
-                    <h3 class="font-cinzel text-xl font-bold text-medieval-goldlight flex items-center gap-2 mb-3">
-                        <span>💰</span> Capítulo 3: Comercio y Economía
-                    </h3>
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex items-start gap-2">
-                            <span class="text-green-400 font-bold">✔</span>
-                            <div><strong class="text-white">Tiendas de Jugadores (Shops):</strong> Puedes establecer cofres de tienda oficial en spawn o en tus bases debidamente señalizadas con precios justos.</div>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-red-400 font-bold">✖</span>
-                            <div><strong class="text-white">Estafas y Fraudes:</strong> Las estafas en transacciones pactadas mediante carteles o tiendas oficiales del servidor están prohibidas y sancionadas con devolución o baneo.</div>
-                        </li>
-                    </ul>
-                </section>
-
+    <div class="book-container">
+        
+        <!-- PÁGINA 1: Introducción -->
+        <div class="page-content active" id="page-1">
+            <div class="page-header">📜 Introducción y Bienvenida</div>
+            <div class="page-body">
+                <p>Bienvenido al reglamento oficial de <strong>NexoSMP Survival</strong>. Este servidor ha sido concebido para ofrecer una experiencia de juego justa, altamente competitiva y libre de toxicidad para todos los aventureros.</p>
+                <p>Nuestra comunidad valora el esfuerzo, el compañerismo y el respeto mutuo por encima de todo. Cada norma establecida busca proteger el tiempo y las construcciones de los jugadores.</p>
+                <div class="note-box">
+                    <strong>Nota importante:</strong> El desconocimiento absoluto de estas reglas no exime a ningún jugador de su cumplimiento ni de las sanciones severas aplicadas por el equipo de administración.
+                </div>
             </div>
         </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-gray-800 bg-medieval-card/40 py-6 text-center text-xs text-gray-500">
-        <p>NexoSMP Survival 2026 • Diseñado con estilo épico medieval</p>
+        <!-- PÁGINA 2: Capítulo 1 (Conducta) -->
+        <div class="page-content" id="page-2">
+            <div class="page-header">🛡️ Capítulo 1: Conducta y Respeto</div>
+            <div class="page-body">
+                <div class="rule-card">
+                    <span class="red">✖ Cero Toxicidad y Acoso:</span> Insultos graves, comentarios discriminatorios, acoso reiterado u odio hacia otros usuarios están terminantemente prohibidos y conllevan baneo permanente.
+                </div>
+                <div class="rule-card">
+                    <span class="red">✖ Spam y Flood en Chat:</span> No satures el chat público con repetición excesiva de texto, uso continuo de mayúsculas o enlaces externos no autorizados por el staff.
+                </div>
+                <div class="rule-card">
+                    <span class="green">✔ Respeto al Staff:</span> Las decisiones de los administradores y moderadores son firmes. Cualquier desacuerdo o reclamo debe tramitarse mediante un ticket de soporte formal.
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: Capítulo 2 (PvP y Claims) -->
+        <div class="page-content" id="page-3">
+            <div class="page-header">⚔️ Capítulo 2: PvP, Combate y Claims</div>
+            <div class="page-body">
+                <div class="rule-card">
+                    <span class="yellow">⚡ PvP Habilitado:</span> Está permitido el combate fuera de las zonas seguras (Spawn) y de los reclamos ajenos. Queda prohibido el uso de trampas maliciosas en portales o zonas de novatos.
+                </div>
+                <div class="rule-card">
+                    <span class="yellow">⚡ Sistema de Claims:</span> Utiliza obligatoriamente las herramientas de protección de terrenos para asegurar tus pertenencias y bases. El robo o destrucción en zonas ajenas protegidas se sanciona gravemente.
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 4: Capítulo 3 (Comercio) -->
+        <div class="page-content" id="page-4">
+            <div class="page-header">💰 Capítulo 3: Comercio y Economía</div>
+            <div class="page-body">
+                <div class="rule-card">
+                    <span class="green">✔ Tiendas de Jugadores:</span> Puedes establecer cofres de tienda oficial en las zonas designadas de spawn o en tus bases debidamente señalizadas con precios justos y transparentes.
+                </div>
+                <div class="rule-card">
+                    <span class="red">✖ Estafas y Fraudes:</span> Las estafas en transacciones pactadas mediante carteles o tiendas oficiales del servidor están totalmente prohibidas y se sancionan con devolución obligatoria o baneo.
+                </div>
+            </div>
+        </div>
+
+        <!-- Controles de Paso de Página -->
+        <div class="book-footer">
+            <button class="nav-btn" id="prevBtn" onclick="changePage(-1)" disabled>◀ Anterior</button>
+            <div class="page-indicator" id="pageIndicator">Página 1 de 4</div>
+            <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Siguiente ▶</button>
+        </div>
+
+    </div>
+
+    <footer class="site-info">
+        <p>NexoSMP Survival 2026 • Sistema de Libro Interactivo</p>
     </footer>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 4;
+
+        function changePage(direction) {
+            document.getElementById(`page-${currentPage}`).classList.remove('active');
+            
+            currentPage += direction;
+            
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+
+            document.getElementById(`page-${currentPage}`).classList.add('active');
+            
+            document.getElementById('pageIndicator').innerText = `Página ${currentPage} de ${totalPages}`;
+            
+            document.getElementById('prevBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').disabled = currentPage === totalPages;
+        }
+    </script>
 
 </body>
 </html>
