@@ -17,444 +17,128 @@
                             leather: '#1f1a17',
                             gold: '#f59e0b',
                             goldlight: '#fbbf24',
-                            amberdark: '#78350f'
                         }
                     },
                     fontFamily: {
                         cinzel: ['Cinzel', 'serif'],
-                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    <style>
-        body {
-            background: radial-gradient(circle at center, #1e1b18 0%, #0c0a09 100%);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #e7e5e4;
-            overflow-x: hidden;
-        }
-
-        .book-shadow {
-            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(245, 158, 11, 0.15);
-        }
-
-        .page-texture {
-            background-color: #fcfbf7;
-            background-image: radial-gradient(#e5e2d6 0.75px, transparent 0.75px), radial-gradient(#e5e2d6 0.75px, #fcfbf7 0.75px);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
-            color: #292524;
-        }
-
-        .cover-texture {
-            background: linear-gradient(135deg, #231b14 0%, #15100c 50%, #0d0a08 100%);
-            border: 4px solid #b45309;
-            box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
-        }
-
-        .gold-border {
-            border-image: linear-gradient(to bottom, #f59e0b, #d97706, #78350f) 1;
-        }
-
-        .book-spine {
-            background: linear-gradient(to right, #110d0a, #38271e, #110d0a);
-        }
-
-        /* Page transition effects */
-        .page-content {
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-        }
-        
-        .page-turn-enter {
-            opacity: 0;
-            transform: scale(0.98) translateY(10px);
-        }
-        .page-turn-enter-active {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
-    </style>
 </head>
-<body class="h-full flex flex-col items-center justify-between min-h-screen p-4 md:p-8">
+<body class="bg-medieval-dark text-gray-200 font-sans min-h-full flex flex-col antialiased selection:bg-medieval-gold selection:text-black">
 
-    <header class="text-center my-2 z-10">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-950/60 border border-amber-600/40 text-amber-400 text-xs md:text-sm font-semibold tracking-wider uppercase mb-2 shadow-lg">
-            <span>🛡️ Servidor Oficial Minecraft Survival</span>
+    <!-- Header / Navbar -->
+    <header class="border-b border-medieval-gold/20 bg-medieval-card/85 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl">🛡️</span>
+                <div>
+                    <h1 class="font-cinzel font-bold text-xl text-medieval-gold tracking-wider">NEXOSMP</h1>
+                    <p class="text-xs text-gray-400 tracking-widest uppercase">Reglamento Oficial • Survival</p>
+                </div>
+            </div>
+            <a href="https://discord.gg/nexosmp" target="_blank" class="px-4 py-2 bg-medieval-gold/10 hover:bg-medieval-gold/20 text-medieval-gold border border-medieval-gold/30 rounded-lg text-sm font-semibold transition-all">
+                Discord Oficial
+            </a>
         </div>
-        <h1 class="text-3xl md:text-5xl font-cinzel font-black text-amber-500 tracking-wider drop-shadow-[0_2px_10px_rgba(245,158,11,0.4)]">
-            NEXOSMP REGISTRO
-        </h1>
     </header>
 
-    <main class="w-full max-w-4xl flex-1 flex items-center justify-center my-4">
-        <div class="relative w-full max-w-3xl aspect-[4/5] sm:aspect-[16/11] md:aspect-[16/10] book-shadow rounded-xl flex overflow-hidden border-2 border-amber-600/50 bg-[#120f0d]">
-            
-            <!-- Book Spine Visual Center -->
-            <div class="absolute left-1/2 top-0 bottom-0 w-8 -ml-4 book-spine z-20 hidden md:block opacity-90 shadow-2xl border-x border-amber-900/40"></div>
+    <!-- Main Container -->
+    <main class="flex-grow max-w-4xl w-full mx-auto px-6 py-10">
+        <div class="bg-medieval-card border border-medieval-gold/30 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <!-- Decorative corner elements -->
+            <div class="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-medieval-gold/40 rounded-tl-2xl"></div>
+            <div class="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-medieval-gold/40 rounded-tr-2xl"></div>
+            <div class="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-medieval-gold/40 rounded-bl-2xl"></div>
+            <div class="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-medieval-gold/40 rounded-br-2xl"></div>
 
-            <!-- Left Page / Spread Container -->
-            <div id="book-spread" class="w-full h-full grid grid-cols-1 md:grid-cols-2 relative z-10">
-                <!-- Pages are dynamically injected here by JavaScript -->
+            <div class="text-center mb-10">
+                <h2 class="font-cinzel text-3xl md:text-4xl font-extrabold text-medieval-gold mb-3">LIBRO DE LEYES</h2>
+                <p class="text-gray-400 text-sm max-w-lg mx-auto">Normativa oficial de conducta, comercio y juego limpio establecida para mantener una comunidad sana y competitiva.</p>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="space-y-10 text-gray-300">
+                
+                <!-- Capítulo 0 -->
+                <section class="border-b border-gray-800 pb-8">
+                    <h3 class="font-cinzel text-xl font-bold text-medieval-goldlight flex items-center gap-2 mb-3">
+                        <span>📜</span> Introducción y Bienvenida
+                    </h3>
+                    <p class="text-sm leading-relaxed mb-4">
+                        Bienvenido al reglamento oficial de <strong class="text-white">NexoSMP Survival</strong>. Este servidor ha sido creado para ofrecer una experiencia de juego justa, competitiva y sobre todo divertida para todos los aventureros.
+                    </p>
+                    <div class="bg-medieval-leather/60 border-l-4 border-medieval-gold p-4 rounded-r-lg text-xs text-gray-300">
+                        <strong class="text-medieval-gold">Nota importante:</strong> El desconocimiento de estas reglas no exime a ningún jugador de su cumplimiento o de las sanciones correspondientes aplicadas por el staff.
+                    </div>
+                </section>
+
+                <!-- Capítulo 1 -->
+                <section class="border-b border-gray-800 pb-8">
+                    <h3 class="font-cinzel text-xl font-bold text-medieval-goldlight flex items-center gap-2 mb-3">
+                        <span>🛡️</span> Capítulo 1: Conducta y Respeto
+                    </h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-400 font-bold">✖</span>
+                            <div><strong class="text-white">Cero Toxicidad y Acoso:</strong> Insultos graves, discriminación, acoso reiterado u odio hacia otros jugadores están estrictamente prohibidos y son sancionados con baneo permanente.</div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-400 font-bold">✖</span>
+                            <div><strong class="text-white">Spam y Flood en Chat:</strong> No satures el chat público con repetición excesiva de mensajes, mayúsculas continuas o links externos no autorizados.</div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-400 font-bold">✔</span>
+                            <div><strong class="text-white">Respeto al Staff:</strong> Las decisiones del equipo de administración son firmes. Cualquier reclamo formal debe gestionarse mediante un ticket de soporte.</div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Capítulo 2 -->
+                <section class="border-b border-gray-800 pb-8">
+                    <h3 class="font-cinzel text-xl font-bold text-medieval-goldlight flex items-center gap-2 mb-3">
+                        <span>⚔️</span> Capítulo 2: PvP, Combate y Reclamos
+                    </h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-yellow-400 font-bold">⚡</span>
+                            <div><strong class="text-white">PvP Habilitado:</strong> Permitido fuera de las zonas seguras (Spawn) y reclamos protegidos ajenos. Queda prohibido el abuso de trampas en portales o zonas de novatos.</div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-yellow-400 font-bold">⚡</span>
+                            <div><strong class="text-white">Sistema de Claims:</strong> Protege tus pertenencias y edificaciones utilizando las herramientas de protección del servidor.</div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Capítulo 3 -->
+                <section class="pb-4">
+                    <h3 class="font-cinzel text-xl font-bold text-medieval-goldlight flex items-center gap-2 mb-3">
+                        <span>💰</span> Capítulo 3: Comercio y Economía
+                    </h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-400 font-bold">✔</span>
+                            <div><strong class="text-white">Tiendas de Jugadores (Shops):</strong> Puedes establecer cofres de tienda oficial en spawn o en tus bases debidamente señalizadas con precios justos.</div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-400 font-bold">✖</span>
+                            <div><strong class="text-white">Estafas y Fraudes:</strong> Las estafas en transacciones pactadas mediante carteles o tiendas oficiales del servidor están prohibidas y sancionadas con devolución o baneo.</div>
+                        </li>
+                    </ul>
+                </section>
+
             </div>
         </div>
     </main>
 
-    <footer class="w-full max-w-lg flex flex-col items-center gap-3 z-10">
-        <div class="flex items-center justify-between w-full px-6 py-3 bg-medieval-card/90 backdrop-blur border border-amber-500/30 rounded-2xl shadow-xl">
-            <button id="prev-btn" onclick="prevPage()" class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-600/20 hover:bg-amber-600/40 border border-amber-500/40 text-amber-300 font-semibold transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed">
-                <span>◀ Anterior</span>
-            </button>
-
-            <div class="text-amber-400 font-cinzel font-bold text-sm tracking-widest flex items-center gap-2">
-                <span>Página</span>
-                <span id="page-indicator" class="px-3 py-1 rounded-lg bg-amber-950 border border-amber-700/60 text-amber-300">1 / 6</span>
-            </div>
-
-            <button id="next-btn" onclick="nextPage()" class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-stone-950 font-bold transition-all shadow-lg active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed">
-                <span>Siguiente ▶</span>
-            </button>
-        </div>
-        <p class="text-xs text-stone-400 tracking-wide">NexoSMP Survival 2026 • Diseñado con estilo épico medieval</p>
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 bg-medieval-card/40 py-6 text-center text-xs text-gray-500">
+        <p>NexoSMP Survival 2026 • Diseñado con estilo épico medieval</p>
     </footer>
 
-    <script>
-        const pages = [
-            // PAGE 0: COVER
-            {
-                type: 'cover',
-                content: `
-                    <div class="h-full cover-texture flex flex-col items-center justify-center p-8 text-center rounded-l-xl relative overflow-hidden">
-                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"></div>
-                        <div class="w-20 h-20 rounded-2xl bg-amber-600/20 border-2 border-amber-500 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(245,158,11,0.3)]">
-                            <span class="text-4xl">👑</span>
-                        </div>
-                        <h2 class="text-xs uppercase tracking-[0.3em] text-amber-400 font-semibold mb-2">Reglamento Oficial</h2>
-                        <h1 class="text-3xl md:text-4xl font-cinzel font-black text-amber-100 tracking-wider mb-4 drop-shadow-md">NEXOSMP</h1>
-                        <div class="w-32 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent my-2"></div>
-                        <p class="text-sm font-medium text-stone-300 tracking-widest uppercase mt-2">Modalidad Survival 1.20+</p>
-                        <div class="mt-8 px-6 py-2 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-300 text-xs font-semibold">
-                            Haz clic en "Siguiente" para abrir el libro 📖
-                        </div>
-                    </div>
-                `
-            },
-            // PAGE 1: INTRODUCTION & GENERAL INFO
-            {
-                type: 'normal',
-                left: `
-                    <div class="h-full page-texture p-6 md:p-8 flex flex-col justify-between border-r border-stone-300/60 rounded-l-xl relative">
-                        <div>
-                            <div class="flex items-center gap-2 mb-4 text-amber-800">
-                                <span class="text-xl">📜</span>
-                                <h3 class="font-cinzel font-bold text-lg tracking-wide uppercase">Introducción & Bienvenida</h3>
-                            </div>
-                            <p class="text-stone-700 text-sm leading-relaxed mb-4">
-                                Bienvenido al reglamento oficial de <strong>NexoSMP Survival</strong>. Este servidor ha sido creado para ofrecer una experiencia de juego justa, competitiva y sobre todo divertida para todos los aventureros.
-                            </p>
-                            <div class="p-3 rounded-lg bg-amber-100/70 border-l-4 border-amber-600 text-amber-900 text-xs leading-relaxed mb-4">
-                                <strong>Nota importante:</strong> El desconocimiento de estas reglas no exime a ningun jugador de su cumplimiento o de las sanciones correspondientes aplicadas por el staff.
-                            </div>
-                            <h4 class="font-cinzel font-bold text-stone-900 text-sm mt-6 mb-2">Puntos Clave del Servidor:</h4>
-                            <ul class="space-y-2 text-stone-700 text-xs">
-                                <li class="flex items-start gap-2"><span>⚔️</span><span><strong>PvP Habilitado:</strong> Fuera de las zonas de spawn y reclamos seguros.</span></li>
-                                <li class="flex items-start gap-2"><span>🛡️</span><span><strong>Sistema de Claims:</strong> Protege tus pertenencias con herramientas de protección.</span></li>
-                            </ul>
-                        </div>
-                        <div class="text-[11px] text-stone-500 font-semibold tracking-wider text-right">Página 1</div>
-                    </div>
-                `,
-                right: `
-                    <div class="h-full page-texture p-6 md:p-8 flex flex-col justify-between rounded-r-xl relative">
-                        <div>
-                            <div class="flex items-center gap-2 mb-4 text-amber-800">
-                                <span class="text-xl">🤝</span>
-                                <h3 class="font-cinzel font-bold text-lg tracking-wide uppercase">Capítulo 1: Conducta y Respeto</h3>
-                            </div>
-                            <p class="text-stone-700 text-sm leading-relaxed mb-4">
-                                La convivencia pacífica y el respeto mutuo son pilares fundamentales en NexoSMP. Queremos una comunidad sana.
-                            </p>
-                            <div class="space-y-3">
-                                <div class="p-3 rounded-lg bg-stone-200/60 border border-stone-300">
-                                    <h5 class="font-bold text-stone-900 text-xs mb-1">🚫 Cero Toxicidad & Acoso</h5>
-                                    <p class="text-stone-700 text-[11px] leading-snug">Insultos graves, discriminación, acoso reiterado u odio hacia otros jugadores están estrictamente prohibidos y sancionados con baneo permanente.</p>
-                                </div>
-                                <div class="p-3 rounded-lg bg-stone-200/60 border border-stone-300">
-                                    <h5 class="font-bold text-stone-900 text-xs mb-1">💬 Spam y Flood en Chat</h5>
-                                    <p class="text-stone-700 text-[11px] leading-snug">No satures el chat público con repetición excesiva de mensajes, mayúsculas continuas o links externos no autorizados.</p>
-                                </div>
-                                <div class="p-3 rounded-lg bg-stone-200/60 border border-stone-300">
-                                    <h5 class="font-bold text-stone-900 text-xs mb-1">👑 Respeto al Staff</h5>
-                                    <p class="text-stone-700 text-[11px] leading-snug">Las decisiones del equipo de administración y moderación deben ser respetadas. Si tienes reclamos, hazlo por ticket.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-[11px] text-stone-500 font-semibold tracking-wider text-right">Página 2</div>
-                    </div>
-                `
-            },
-            // PAGE 2: JUEGO LEGAL Y ANTI-CHEAT
-            {
-                type: 'normal',
-                left: `
-                    <div class="h-full page-texture p-6 md:p-8 flex flex-col justify-between border-r border-stone-300/60 rounded-l-xl relative">
-                        <div>
-                            <div class="flex items-center gap-2 mb-4 text-amber-800">
-                                <span class="text-xl">⚡</span>
-                                <h3 class="font-cinzel font-bold text-lg tracking-wide uppercase">Capítulo 2: Juego Legal (Anti-Cheat)</h3>
-                            </div>
-                            <p class="text-stone-700 text-sm leading-relaxed mb-4">
-                                Garantizamos una competencia justa en el modo Survival. Cualquier intento de obtener ventajas injustas sobre otros usuarios será detectado y castigado.
-                            </p>
-                            <div class="p-3 rounded-lg bg-red-100/70 border-l-4 border-red-600 text-red-900 text-xs mb-4">
-                                <strong>⚠️ Tolerancia Cero:</strong> El uso de modificaciones ilegales conlleva el baneo ip/cuenta inmediato sin derecho a apelación rápida.
-                            </div>
-                            <ul class="space-y-2 text-stone-700 text-xs">
-                                <li class="flex items-start gap-2"><span>❌</span><span><strong>Hacks y Clients:</strong> Wurst, Killaura, Fly, Speed, Reach, etc.</span></li>
-                                <li class="flex items-start gap-2"><span>🔍</span><span><strong>X-Ray:</strong> Packs de texturas o mods para ver minerales bajo tierra.</span></li>
-                            </ul>
-                        </div>
-                        <div class="text-[11px] text-stone-500 font-semibold tracking-wider text-right">Página 3</div>
-                    </div>
-                `,
-                right: `
-                    <div class="h-full page-texture p-6 md:p-8 flex flex-col justify-between rounded-r-xl relative">
-                        <div>
-                            <div class="flex items-center gap-2 mb-4 text-amber-800">
-                                <span class="text-xl">⚙️</span>
-                                <h3 class="font-cinzel font-bold text-lg tracking-wide uppercase">Macros y Mods Permitidos</h3>
-                            </div>
-                            <p class="text-stone-700 text-sm leading-relaxed mb-4">
-                                Es importante conocer qué herramientas externas están permitidas para optimizar tu experiencia sin romper las reglas.
-                            </p>
-                            <div class="space-y-3 mb-4">
-                                <div class="p-3 rounded-lg bg-emerald-100/70 border border-emerald-300">
-                                    <h5 class="font-bold text-emerald-900 text-xs mb-1">✅ Mods Permitidos</h5>
-                                    <p class="text-emerald-800 text-[11px]">OptiFine, Sodium, minimapas sin radar de entidades, y Litematica (solo visualización de esquemáticos sin auto-build).</p>
-                                </div>
-                                <div class="p-3 rounded-lg bg-red-100/70 border border-red-300">
-                                    <h5 class="font-bold text-red-900 text-xs mb-1">❌ Macros Prohibidas</h5>
-                                    <p class="text-red-800 text-[11px]">Auto-clickers de alta velocidad, macros de combate automático o scripts de granjas AFK automatizadas con software externo.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-[11px] text-stone-500 font-semibold tracking-wider text-right">Página 4</div>
-                    </div>
-                `
-            },
-            // PAGE 3: GRIEFINGS Y CONSTRUCCIÓN
-            {
-                type: 'normal',
-                left: `
-                    <div class="h-full page-texture p-6 md:p-8 flex flex-col justify-between border-r border-stone-300/60 rounded-l-xl relative">
-                        <div>
-                            <div class="flex items-center gap-2 mb-4 text-amber-800">
-                                <span class="text-xl">🏰</span>
-                                <h3 class="font-cinzel font-bold text-lg tracking-wide uppercase">Capítulo 3: Griefing y Bases</h3>
-                            </div>
-                            <p class="text-stone-700 text-sm leading-relaxed mb-4">
-                                El modo Survival permite el combate y la guerra entre facciones bajo ciertas normativas de protección de bases.
-                            </p>
-                            <div class="space-y-3">
-                                <div class="p-3 rounded-lg bg-stone-200/60 border border-stone-300">
-                                    <h5 class="font-bold text-stone-900 text-xs mb-1">🔒 Zonas Protegidas (Claims)</h5>
-                                    <p class="text-stone-700 text-[11px]">Las bases reclamadas correctamente con los comandos del servidor están 100% protegidas contra robo y destrucción de bloques.</p>
-                                </div>
-                                <div class="p-3 rounded-lg bg-stone-200/60 border border-stone-300">
-                                    <h5 class="font-bold text-stone-900 text-xs mb-1">⛏️ Zonas No Claimed (Wild)</h5>
-                                    <p class="text-stone-700 text-[11px]">Todo lo construido fuera de reclamaciones se considera salvaje y susceptible a griefing o saqueo por parte de otros jugadores.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-[11px] text-stone-500 font-semibold tracking-wider text-right">Página 5</div>
-                    </div>
-                `,
-                right: `
-                    <div class="h-full page-texture p-6 md:p-8 flex flex-col justify-between rounded-r-xl relative">
-                        <div>
-                            <div class="flex items-center gap-2 mb-4 text-amber-800">
-                                <span class="text-xl">⚠️</span>
-                                <h3 class="font-cinzel font-bold text-lg tracking-wide uppercase">Límites de Entidades y Granjas</h3>
-                            </div>
-                            <p class="text-stone-700 text-sm leading-relaxed mb-4">
-                                Para evitar el lag y asegurar un rendimiento óptimo de 20 TPS en el servidor Survival, existen límites estrictos.
-                            </p>
-                            <ul class="space-y-2.5 text-stone-700 text-xs">
-                                <li class="flex items-start gap-2"><span>🐄</span><span><strong>Animales por Chunk:</strong> Máximo 40 entidades móviles por chunk. El exceso será limpiado automáticamente.</span></li>
-                                <li class="flex items-start gap-2"><span>⚙️</span><span><strong>Redstone Masivo:</strong> Relojes (clocks) de redstone rápidos o infinitos están prohibidos y serán destruidos.</span></li>
-                                <li class="flex items-start gap-2"><span>🛑</span><span><strong>Lag Machines:</strong> Cualquier construcción deliberada para causar caída del servidor resultará en baneo permanente.</span></li>
-                            </ul>
-                        </div>
-                        <div class="text-[11px] text-stone-500 font-semibold tracking-wider text-right">Página 6</div>
-                    </div>
-                `
-            },
-            // PAGE 4: COMERCIO Y ECONOMÍA
-            {
-                type: 'normal',
-                left: `
-                    <div class="h-full page-texture p-6 md:p-8 flex flex-col justify-between border-r border-stone-300/60 rounded-l-xl relative">
-                        <div>
-                            <div class="flex items-center gap-2 mb-4 text-amber-800">
-                                <span class="text-xl">💰</span>
-                                <h3 class="font-cinzel font-bold text-lg tracking-wide uppercase">Capítulo 4: Comercio y Economía</h3>
-                            </div>
-                            <p class="text-stone-700 text-sm leading-relaxed mb-4">
-                                La economía de NexoSMP está basada en el libre mercado entre jugadores, tiendas de usuarios y la moneda oficial del servidor.
-                            </p>
-                            <div class="space-y-3">
-                                <div class="p-3 rounded-lg bg-stone-200/60 border border-stone-300">
-                                    <h5 class="font-bold text-stone-900 text-xs mb-1">🛒 Tiendas de Jugadores (Shops)</h5>
-                                    <p class="text-stone-700 text-[11px]">Puedes establecer cofres de tienda oficial en spawn o en tus bases debidamente señalizadas con precios justos.</p>
-                                </div>
-                                <div class="p-3 rounded-lg bg-stone-200/60 border border-stone-300">
-                                    <h5 class="font-bold text-stone-900 text-xs mb-1">❌ Estafas y Fraudes</h5>
-                                    <p class="text-stone-700 text-[11px]">Las estafas en transacciones pactadas mediante carteles o tiendas oficiales del servidor están prohibidas y sancionadas con devolución o baneo.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-[11px] text-stone-500 font-semibold tracking-wider text-right">Página 7</div>
-                    </div>
-                `,
-                right: `
-                    <div class="h-full page-texture p-6 md:p-8 flex flex-col justify-between rounded-r-xl relative">
-                        <div>
-                            <div class="flex items-center gap-2 mb-4 text-amber-800">
-                                <span class="text-xl">⚖️</span>
-                                <h3 class="font-cinzel font-bold text-lg tracking-wide uppercase">Comercio Legal y Multicuentas</h3>
-                            </div>
-                            <p class="text-stone-700 text-sm leading-relaxed mb-4">
-                                Mantener la transparencia en la economía evita inflaciones indeseadas y desequilibrios en la experiencia survival.
-                            </p>
-                            <ul class="space-y-2.5 text-stone-700 text-xs">
-                                <li class="flex items-start gap-2"><span>👥</span><span><strong>Multicuentas (Alts):</strong> Prohibido usar cuentas secundarias para farmear dinero de bienvenida o saltarse límites de votación/granjas.</span></li>
-                                <li class="flex items-start gap-2"><span>💸</span><span><strong>Venta de Items por Dinero Real:</strong> Queda estrictamente prohibido vender objetos, rangos o dinero del juego por dinero de la vida real fuera de la tienda oficial.</span></li>
-                            </ul>
-                        </div>
-                        <div class="text-[11px] text-stone-500 font-semibold tracking-wider text-right">Página 8</div>
-                    </div>
-                `
-            },
-            // PAGE 5: SANCIONES Y SOPORTE
-            {
-                type: 'normal',
-                left: `
-                    <div class="h-full page-texture p-6 md:p-8 flex flex-col justify-between border-r border-stone-300/60 rounded-l-xl relative">
-                        <div>
-                            <div class="flex items-center gap-2 mb-4 text-amber-800">
-                                <span class="text-xl">⚖️</span>
-                                <h3 class="font-cinzel font-bold text-lg tracking-wide uppercase">Capítulo 5: Escalafón de Sanciones</h3>
-                            </div>
-                            <p class="text-stone-700 text-sm leading-relaxed mb-4">
-                                Dependiendo de la gravedad de la infracción cometida, el staff aplicará las siguientes medidas disciplinarias:
-                            </p>
-                            <div class="space-y-2 text-xs">
-                                <div class="p-2.5 rounded bg-amber-50 border border-amber-200">
-                                    <strong>1. Advertencia (Warn):</strong> Faltas menores de comportamiento o spam leve.
-                                    </div>
-                                <div class="p-2.5 rounded bg-amber-100 border border-amber-300">
-                                    <strong>2. Silenciamiento (Mute):</strong> Infracciones reiteradas en el chat o toxicidad moderada.
-                                </div>
-                                <div class="p-2.5 rounded bg-orange-100 border border-orange-300">
-                                    <strong>3. Expulsión / Baneo Temporal:</strong> Griefing menor o uso de bugs.
-                                </div>
-                                <div class="p-2.5 rounded bg-red-100 border border-red-300">
-                                    <strong>4. Baneo Permanente:</strong> Hacks, X-ray, estafas graves o insultos discriminatorios.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-[11px] text-stone-500 font-semibold tracking-wider text-right">Página 9</div>
-                    </div>
-                `,
-                right: `
-                    <div class="h-full page-texture p-6 md:p-8 flex flex-col justify-between rounded-r-xl relative">
-                        <div>
-                            <div class="flex items-center gap-2 mb-4 text-amber-800">
-                                <span class="text-xl">⛑️</span>
-                                <h3 class="font-cinzel font-bold text-lg tracking-wide uppercase">Soporte y Apelaciones</h3>
-                            </div>
-                            <p class="text-stone-700 text-sm leading-relaxed mb-4">
-                                ¿Tienes algún problema dentro del servidor, bug, pérdida de items o quieres apelar una sanción injusta?
-                            </p>
-                            <div class="p-4 rounded-xl bg-amber-950/10 border border-amber-600/40 mb-4">
-                                <h5 class="font-cinzel font-bold text-amber-900 text-xs mb-2">📩 ¿Cómo abrir un Ticket?</h5>
-                                <ol class="list-decimal list-inside space-y-1.5 text-stone-700 text-[11px]">
-                                    <li>Entra a nuestro servidor oficial de Discord.</li>
-                                    <li>Dirígete al canal <strong>⁠⛑️┃sᴏᴘᴏʀᴛᴇ</strong>.</li>
-                                    <li>Haz clic en el botón de crear ticket y describe tu caso adjuntando pruebas (capturas o videos).</li>
-                                </ol>
-                            </div>
-                            <p class="text-stone-600 text-[11px] italic">
-                                El equipo de staff te atenderá a la brevedad posible. ¡Gracias por formar parte de NexoSMP!
-                            </p>
-                        </div>
-                        <div class="text-[11px] text-stone-500 font-semibold tracking-wider text-right">Página 10</div>
-                    </div>
-                `
-            }
-        ];
-
-        let currentPage = 0;
-        const totalPages = pages.length;
-
-        function renderBook() {
-            const spreadContainer = document.getElementById('book-spread');
-            const pageData = pages[currentPage];
-            
-            // Add page transition classes
-            spreadContainer.classList.add('page-content', 'page-turn-enter');
-            
-            setTimeout(() => {
-                if (pageData.type === 'cover') {
-                    spreadContainer.innerHTML = `
-                        <div class="col-span-1 md:col-span-2 h-full">
-                            ${pageData.content}
-                        </div>
-                    `;
-                } else {
-                    spreadContainer.innerHTML = `
-                        <div class="col-span-1 h-full">${pageData.left}</div>
-                        <div class="col-span-1 h-full hidden md:block">${pageData.right}</div>
-                    `;
-                }
-                
-                // Update indicator
-                document.getElementById('page-indicator').textContent = `${currentPage + 1} / ${totalPages}`;
-                
-                // Update buttons state
-                document.getElementById('prev-btn').disabled = currentPage === 0;
-                document.getElementById('next-btn').disabled = currentPage === totalPages - 1;
-
-                spreadContainer.classList.remove('page-turn-enter');
-                spreadContainer.classList.add('page-turn-enter-active');
-            }, 150);
-        }
-
-        function nextPage() {
-            if (currentPage < totalPages - 1) {
-                currentPage++;
-                renderBook();
-            }
-        }
-
-        function prevPage() {
-            if (currentPage > 0) {
-                currentPage--;
-                renderBook();
-            }
-        }
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') nextPage();
-            if (e.key === 'ArrowLeft') prevPage();
-        });
-
-        // Initial render on load
-        window.onload = function() {
-            renderBook();
-        };
-    </script>
 </body>
 </html>
